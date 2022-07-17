@@ -11,8 +11,8 @@ const CircleArray = [];
 const circleRadialGradient = canvas.createRadialGradient(
   WIDTH / 2,
   HEIGHT / 2,
-  100,
-  50,
+  0,
+  0,
   50,
   WIDTH
 );
@@ -29,9 +29,9 @@ const background = () => {
   const backgroundRadialGradient = canvas.createRadialGradient(
     WIDTH / 2,
     HEIGHT / 2,
-    100,
-    50,
-    50,
+    0,
+    0,
+    0,
     WIDTH
   );
   for (let i = 0; i <= 10; i++) {
@@ -80,7 +80,7 @@ class Circle {
     canvas.fill();
 
     if (this.x + this.r >= WIDTH || this.x - this.r <= 0) {
-      background2();
+      //  / background2();
       this.dx = -this.dx;
     }
 
