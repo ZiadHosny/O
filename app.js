@@ -80,12 +80,12 @@ class Circle {
     canvas.fill();
 
     if (this.x + this.r >= WIDTH || this.x - this.r <= 0) {
-      // background2();
+      background2();
       this.dx = -this.dx;
     }
 
     if (this.y + this.r > HEIGHT || this.y - this.r < 0) {
-      background2();
+      //background2();
       this.dy = -this.dy;
     }
     this.x += this.dx;
