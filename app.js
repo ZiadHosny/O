@@ -11,14 +11,16 @@ const CircleArray = [];
 const circleRadialGradient = canvas.createRadialGradient(
   WIDTH / 2,
   HEIGHT / 2,
-  0,
-  0,
+  30,
   50,
+  200,
   WIDTH
 );
 
 for (let i = 0; i <= 10; i++) {
-  if (i % 2 == 0) {
+  if (i == 0) {
+    circleRadialGradient.addColorStop(i / 10, 'blue');
+  } else if (i % 2 == 0) {
     circleRadialGradient.addColorStop(i / 10, 'red');
   } else {
     circleRadialGradient.addColorStop(i / 10, 'black');
@@ -29,34 +31,16 @@ const background = () => {
   const backgroundRadialGradient = canvas.createRadialGradient(
     WIDTH / 2,
     HEIGHT / 2,
-    0,
-    0,
-    0,
+    30,
+    50,
+    200,
     WIDTH
   );
   for (let i = 0; i <= 10; i++) {
-    if (i % 2 == 0) {
-      backgroundRadialGradient.addColorStop(i / 10, 'black');
-    } else {
-      backgroundRadialGradient.addColorStop(i / 10, 'red');
-    }
-  }
-  canvas.fillStyle = backgroundRadialGradient;
-  canvas.fillRect(0, 0, WIDTH, HEIGHT);
-};
-
-const background2 = () => {
-  const backgroundRadialGradient = canvas.createRadialGradient(
-    WIDTH / 2,
-    HEIGHT / 2,
-    100,
-    50,
-    50,
-    WIDTH
-  );
-  for (let i = 0; i <= 10; i++) {
-    if (i % 2 == 0) {
+    if (i == 0) {
       backgroundRadialGradient.addColorStop(i / 10, 'white');
+    } else if (i % 2 == 0) {
+      backgroundRadialGradient.addColorStop(i / 10, 'black');
     } else {
       backgroundRadialGradient.addColorStop(i / 10, 'red');
     }
@@ -80,12 +64,10 @@ class Circle {
     canvas.fill();
 
     if (this.x + this.r >= WIDTH || this.x - this.r <= 0) {
-      //  / background2();
       this.dx = -this.dx;
     }
 
     if (this.y + this.r > HEIGHT || this.y - this.r < 0) {
-      //background2();
       this.dy = -this.dy;
     }
     this.x += this.dx;
@@ -106,7 +88,7 @@ const animation = () => {
   requestAnimationFrame(animation);
 };
 
-for (i = 0; i < 30; i++) {
+for (i = 0; i < 50; i++) {
   const r = Math.random() * 15 + 5;
   const dx = Math.random() * 3 + 1;
   const dy = Math.random() * 3 + 1;
